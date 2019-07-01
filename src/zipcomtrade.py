@@ -1,18 +1,15 @@
-import json
+
 import sys
-
 import time
-
 import glob, os
 import os.path
-
 import zipfile
 
 homedir = os.path.expanduser("~")
 chemindesfichiers = homedir+"/oscillo/data"
 
 #initialisation
-
+#creation du premier repertoire qui stockera les pcap
 directoryByHourReference = time.strftime("%m-%d-%H")
 nomCheminDataParHeure = chemindesfichiers+"/"+directoryByHourReference
 print(nomCheminDataParHeure)
@@ -21,6 +18,7 @@ try:
 except :
     pass
 
+#programme
 while True:
     directoryByHour = time.strftime("%m-%d-%H")
 
@@ -35,7 +33,7 @@ while True:
 
     if tempsDernierFichier < 10:
         tempsDernierFichier = "0"+str(tempsDernierFichier)
-
+    #le fichier en cours utilise par tcpdump ne doit pas etre zipe et efface
     nomFichierPrededent = "trace-"+time.strftime("%m-%d-%H")+"-"+str(tempsDernierFichier)+".pcap"
     nomFichierCourant = "trace-"+time.strftime("%m-%d-%H-%M")+".pcap"
 
