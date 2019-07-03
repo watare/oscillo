@@ -27,7 +27,7 @@ while True:
         try:
             os.mkdir(nomCheminDataParHeure)
         except :
-            pass
+            sys.exit()
 
     tempsDernierFichier = int(time.strftime("%M"))-1
 

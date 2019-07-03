@@ -1,0 +1,14 @@
+FROM ubuntu
+#ajout du script a l image docker
+ADD ./src/tcpdump.sh /root
+
+
+WORKDIR /root
+
+#changement des droits
+RUN chmod +x ./tcpdump.sh
+RUN apt-get update
+RUN apt-get install -y tcpdump
+
+#exectution de la fonction
+CMD /bin/bash ./tcpdump.sh
