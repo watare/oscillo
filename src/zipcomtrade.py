@@ -27,7 +27,7 @@ while True:
         try:
             os.mkdir(nomCheminDataParHeure)
         except :
-            sys.exit()
+            print("echec creation du fichier")
 
     tempsDernierFichier = int(time.strftime("%M"))-1
 
@@ -40,8 +40,11 @@ while True:
     for file in glob.glob("/var/tmp/*.pcap"):
         if (os.path.basename(file) !=nomFichierCourant and os.path.basename(file) !=nomFichierPrededent):
             zip_file = zipfile.ZipFile(nomCheminDataParHeure+"/"+os.path.basename(file)+'.zip','w')
-            zip_file.write(file, compress_type=zipfile.ZIP_DEFLATED)
-            zip_file.close()
-            os.remove(file)
+            try:
+                zip_file.write(file, compress_type=zipfile.ZIP_DEFLATED)
+                zip_file.close()
+                os.remove(file)
+            except:
+                print("echec zip file")
 
     time.sleep(30)
