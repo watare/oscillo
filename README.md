@@ -1,14 +1,23 @@
 # oscillo
 
-#sur l'hôte
-##créer un répertoire /oscillo_data
-chmod 777 /oscillo_data
+# préparation de l'hôte
 
-##créer un disque dur ram de façon permanente
-##ajouter la ligne suivante au fichier /etc/fstab
-tmpfs /media/virtuelram tmpfs defaults,size=1g 0 0
+lancer la commande sudo /bin/bash hostconfig.sh
 
-#construction des conteneurs
+pour créer les dossier /oscillo_data et /media/virtuelram avec les bons droits 
+le dossier virtuelram est un dossier tmpfs de 1g par defaut
 
-script dockerBuild*
-s'assurer d'utiliser le bon Dockerfile (tcpdump ou zip)
+
+# construction des images tcpdump et zipcomtrade
+
+sudo /bin/bash dockerBuild.sh
+
+# lancement des containeurs
+
+sudo /bin/bash lancement_oscillo.sh
+
+# stockage des fichiers
+
+les fichiers capturés sont stockés temporairement (1 minute) dans le dossier mémoire /media/virtuelram
+puis zippé et transférer dans le dossier /oscillo_data
+
