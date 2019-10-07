@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #a saisir#####################################################################
-carte_reseau='enxc8f750c88dd6' &&
+carte_reseau='ens3' &&
 
 #reinitialisation############################################################
 echo initialisation efface les anciens conteneurs et le macvlan
