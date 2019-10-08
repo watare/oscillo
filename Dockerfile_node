@@ -1,0 +1,19 @@
+FROM ubuntu
+
+
+
+WORKDIR /root
+RUN apt-get update
+RUN apt-get install -y nodejs
+
+#ajout du script a l image docker
+COPY ./src/nodeserver /root
+
+#changement des droits
+RUN chmod +x ./express.sh
+
+
+
+
+#exectution de la fonction
+CMD node express.js
