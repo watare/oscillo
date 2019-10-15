@@ -30,7 +30,8 @@ then
 	editcap -A "$year-$1 $2:$3"  -B "$year-$4 $5:$6" input"$year-$1 $2:$3 $year-$4 $5:$6".pcap /root/ftpuser/"$year-$1 $2:$3 $year-$4 $5:$6".pcap  &&
 	echo "edit termine" 
 	#nettoyage
-    if [ "$restant" == "0"]; then
+    if [ "$restant" == "0"] 
+    then
 	    rm *.pcap
 	    rm -Rf ./tmp &&
     fi
