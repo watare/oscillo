@@ -23,5 +23,5 @@ puis zippé et transférer dans le dossier /oscillo_data
 
 # limitations actuelles
 
-Une seule requette à la fois
+l'interface ne se met pas à jour pour le multi requete
 Si aucun pcap ne correspond à la plage demandée un fichier vierge est quand même créé
