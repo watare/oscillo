@@ -50,6 +50,7 @@ echo "$carte_reseau"
 echo lancement des conteneurs
 
 # nodeserver
+# le server est disponible sur le port 3000 de l'hote
 sudo docker run \
 --restart always \
 --name=nodeserver \
@@ -57,16 +58,16 @@ sudo docker run \
 -v /home/ftpuser:/root/ftp \
 --cap-add sys_nice \
 --cap-add net_admin \
---net macvlan  \
+--publish 3000:3000   \
 nodeserver:latest &
 
 echo "nodeserver lance"
 
 #dockerbuild
-
+#application disponible sur le port 80 de l'hote
 sudo docker run \
 --name=oscillo-app \
---net macvlan \
+--publish 80:80 \
 oscillo-app:latest &
 
 
@@ -88,7 +89,6 @@ sudo docker run  \
 --name=zipcomtrade \
 -v /media/virtuelram:/var/tmp \
 -v /data_oscillo:/root/oscillo/data \
---net macvlan \
 --cap-add sys_nice \
 --cap-add net_admin \
 zipcomtrade:latest & disown

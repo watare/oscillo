@@ -1,3 +1,3 @@
 FROM nginx
-COPY ./src/oscillo-app/dist/oscillo-app  /usr/share/nginx/html
+COPY ./src/oscillo-app/  /usr/share/nginx/html
 
