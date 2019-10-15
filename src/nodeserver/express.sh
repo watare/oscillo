@@ -11,7 +11,8 @@ endSecond="$6"
 
 #creation du fichier de la journee correspondante
 echo "c'est parti" 
-mergecap -w input"$year-$1 $2:$3 $year-$4 $5:$6".pcap $(find ./data -name "trace-$1*.pcap") &&
+filelist=$(find  -name "trace-$1*.zip" -exec sh -c 'unzip -jq -d tmp {}' ';' | find -name ./tmp "*pcap")
+mergecap -w input"$year-$1 $2:$3 $year-$4 $5:$6".pcap "$filelist"
 #creation du fichier filtree sur la plage demandee
 echo "merge termine" 
 #penser a changer les droits du repertoir homeftpuser chmod o+rw /home/ftp/user
