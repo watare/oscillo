@@ -34,6 +34,8 @@ then
     then
 	    rm *.pcap
 	    rm -Rf ./tmp &&
+    else
+        echo "ne rien effacer"
     fi
 	echo "operation termine"
 else
