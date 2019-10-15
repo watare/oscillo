@@ -34,8 +34,8 @@ while True:
     if tempsDernierFichier < 10:
         tempsDernierFichier = "0"+str(tempsDernierFichier)
     #le fichier en cours utilise par tcpdump ne doit pas etre zipe et efface
-    nomFichierPrededent = "trace-"+time.strftime("%m-%d-%H")+"-"+str(tempsDernierFichier)+".pcap"
-    nomFichierCourant = "trace-"+time.strftime("%m-%d-%H-%M")+".pcap"
+    nomFichierPrededent = "trace-"+time.strftime("%m-%d-%H")+":"+str(tempsDernierFichier)+".pcap"
+    nomFichierCourant = "trace-"+time.strftime("%m-%d-%H:%M")+".pcap"
 
     for file in glob.glob("/var/tmp/*.pcap"):
         if (os.path.basename(file) !=nomFichierCourant and os.path.basename(file) !=nomFichierPrededent):
