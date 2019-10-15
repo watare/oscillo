@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #a saisir#####################################################################
-carte_reseau='ens3' &&
+carte_reseau='eno1' &&
 
 #reinitialisation############################################################
 echo initialisation efface les anciens conteneurs et le macvlan
@@ -55,7 +55,7 @@ sudo docker run \
 --restart always \
 --name=nodeserver \
 -v /data_oscillo:/root/data \
--v /home/ftpuser:/root/ftp \
+-v /home/ftpuser:/root/ftpuser \
 --cap-add sys_nice \
 --cap-add net_admin \
 --publish 3000:3000   \

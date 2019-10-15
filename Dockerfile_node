@@ -1,12 +1,11 @@
-FROM ubuntu
-
-
+FROM manell/wireshark
 
 WORKDIR /root
 RUN apt-get update
 RUN apt-get install -y nodejs
-RUN apt-get install -y wireshark-common
-RUN apt-get install -y install zip
+RUN apt-get install -y pcapfix
+#RUN apt-get install -y wireshark
+RUN apt-get install -y zip unzip
 #ajout du script a l image docker
 COPY ./src/nodeserver /root
 
