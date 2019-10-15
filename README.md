@@ -21,3 +21,7 @@ sudo /bin/bash lancement_oscillo.sh
 les fichiers capturés sont stockés temporairement (1 minute) dans le dossier mémoire /media/virtuelram
 puis zippé et transférer dans le dossier /oscillo_data
 
+# limitations actuelles
+
+### une seule requette à la fois
+### si aucun pcap ne correspond à la plage demandé un fichier vierge est quand même créé
