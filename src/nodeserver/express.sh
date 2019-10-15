@@ -33,7 +33,7 @@ then
     if [ "$restant" == "0"] 
     then
 	    rm *.pcap
-	    rm -Rf ./tmp &&
+	    rm -Rf ./tmp
     else
         echo "ne rien effacer"
     fi
