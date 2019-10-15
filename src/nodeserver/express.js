@@ -69,11 +69,11 @@ app.post('/requests.json',function(req,res){
         timeFin = req.body[i].timeFin;
         
         startDate = date.month+"-"+date.day;
-        startTime = timeDebut.hour+"-"+timeDebut.minute
+        startTime = timeDebut.hour+":"+timeDebut.minute
         startSecond = timeDebut.second;
 
         endDate = startDate;
-        endTime = timeFin.hour+"-"+timeFin.minute
+        endTime = timeFin.hour+":"+timeFin.minute
         endSecond = timeFin.second;
         console.log(startDate)
 
