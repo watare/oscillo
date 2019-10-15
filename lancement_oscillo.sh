@@ -54,7 +54,7 @@ echo lancement des conteneurs
 sudo docker run \
 --restart always \
 --name=nodeserver \
--v /oscillo_data:/root/data \
+-v /data_oscillo:/root/data \
 -v /home/ftpuser:/root/ftp \
 --cap-add sys_nice \
 --cap-add net_admin \
