@@ -41,6 +41,7 @@ app.post('/requests.json',function(req,res){
      * 4 parametres sont envoyés au script.sh : date/timeDebut et date/timeFin
      */
     for( var i = 0; i<Object.keys(req.body).length;i++){
+        restant = Object.keys(req.body).length -i+1;
         date = req.body[i].date;
         id = req.body[i].id;
         
@@ -85,7 +86,7 @@ app.post('/requests.json',function(req,res){
          * attention vérifier que le script bien les droits nécessaires
          * pour être exécuter
          */
-        script = "./express.sh"+" " + startDate +" "+startTime+" "+startSecond+" "+endDate+" "+endTime+" "+endSecond
+        script = "./express.sh"+" " + startDate +" "+startTime+" "+startSecond+" "+endDate+" "+endTime+" "+endSecond+" "+restant.toString()
         shell.exec(script,(error)=>{
             console.log(id)
             reponses.push({id:id,
