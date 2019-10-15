@@ -13,11 +13,24 @@ endSecond="$6"
 echo "c'est parti" 
 echo "$startDate"
 filelist=$(find  -name "trace-$1*.zip" -exec sh -c 'unzip -jq -d tmp {}' ';')
-mergecap -w input"$year-$1 $2:$3 $year-$4 $5:$6".pcap $(find -P "./tmp" -name "*.pcap")
-#creation du fichier filtree sur la plage demandee
-echo "merge termine" 
-#penser a changer les droits du repertoir homeftpuser chmod o+rw /home/ftp/user
-editcap -A "$year-$1 $2:$3"  -B "$year-$4 $5:$6" input"$year-$1 $2:$3 $year-$4 $5:$6".pcap /root/ftpuser/"$year-$1 $2:$3 $year-$4 $5:$6".pcap  &&
-echo "edit termine" 
-rm input"$year-$1 $2:$3 $year-$4 $5:$6".pcap &&
-echo "operation termine"
+for filename in ./tmp/*.pcap; do
+	pcapfix -dn "$filename"
+done
+
+fixed=$(find -P "./" -name "fixed*.pcap")
+if [ ! -z "$fixed" ]
+then
+	mergecap -w input"$year-$1 $2:$3 $year-$4 $5:$6".pcap $(find -P "./" -name "fixed*.pcap")
+	#creation du fichier filtree sur la plage demandee
+	echo "merge termine" 
+
+	#penser a changer les droits du repertoir homeftpuser chmod o+rw /home/ftp/user
+	editcap -A "$year-$1 $2:$3"  -B "$year-$4 $5:$6" input"$year-$1 $2:$3 $year-$4 $5:$6".pcap /root/ftpuser/"$year-$1 $2:$3 $year-$4 $5:$6".pcap  &&
+	echo "edit termine" 
+	#nettoyage
+	rm *.pcap
+	rm -Rf ./tmp &&
+	echo "operation termine"
+else
+	echo "pas de fichier trouve"
+fi
