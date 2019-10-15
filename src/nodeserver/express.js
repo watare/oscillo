@@ -29,6 +29,10 @@ app.get('/',function(req,res){
     res.send("leserveurfonctionne");
 })
 
+/**
+ * variable pour stocker les reponses
+ */
+var reponses = [];
 app.post('/requests.json',function(req,res){
     
     /**
@@ -84,13 +88,13 @@ app.post('/requests.json',function(req,res){
         script = "./express.sh"+" " + startDate +" "+startTime+" "+startSecond+" "+endDate+" "+endTime+" "+endSecond
         shell.exec(script,(error)=>{
             console.log(id)
-                res.send({id:id,
-                    reponse :"le fichier: "+ date.year+"-"+startDate+" "+startTime+":"+startSecond+
-                " "+date.year+"-"+endDate+" "+endTime+":"+endSecond+".pcap est disponible sur le serveur ftp"});
+            reponses.push({id:id,
+                reponse :"le fichier: "+ date.year+"-"+startDate+" "+startTime+":"+startSecond+
+            " "+date.year+"-"+endDate+" "+endTime+":"+endSecond+".pcap est disponible sur le serveur ftp"})    
                 })
             
     }
-    
+    res.send();
     
 
     //res.end();  
