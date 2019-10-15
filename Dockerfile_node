@@ -6,6 +6,7 @@ WORKDIR /root
 RUN apt-get update
 RUN apt-get install -y nodejs
 RUN apt-get install -y wireshark-common
+RUN apt-get install -y install zip
 #ajout du script a l image docker
 COPY ./src/nodeserver /root
 
